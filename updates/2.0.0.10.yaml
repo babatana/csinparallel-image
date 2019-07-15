@@ -1,3 +1,0 @@
-- name: test10
-  debug:
-    msg: "2.0.0.10"
