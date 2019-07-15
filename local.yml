@@ -1,0 +1,19 @@
+---
+- hosts: localhost
+  remote_user: root
+  tasks: 
+  - name: "Updates"
+    include_tasks: "{{ item }}"
+    when: imgVersion is version(item | regex_replace('/.*/') | regex_replace('.yaml'), '<')
+    with_fileglob: "updates/*.yaml"
+
+
+  - name: Update version
+    become: yes
+    copy: 
+      src: files/version
+      dest: /usr/share/HD/version
+      mode: '0666'
+
+
+  
