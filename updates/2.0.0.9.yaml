@@ -1,0 +1,7 @@
+- name: Update pullUpdates
+  become: yes
+  copy:
+    src: files/pullUpdates.bash
+    dest: /usr/share/HD/pullUpdates.bash
+    owner: root
+    mode: "0777"
