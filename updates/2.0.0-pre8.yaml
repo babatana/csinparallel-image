@@ -1,0 +1,10 @@
+- name: Add pullUpdates
+  become: yes
+  copy:
+    src: files/pullUpdates.bash
+    dest: /usr/share/HD/pullUpdates.bash
+    owner: root
+    mode: "0777"
+
+- name: Update PiTracker
+  import_tasks: ../update_pitracker.yaml
