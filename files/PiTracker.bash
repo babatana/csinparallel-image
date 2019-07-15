@@ -31,6 +31,7 @@ then
     exit 2
 fi
 
+# Check for any image updates
 ansible-pull -o \
 -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/narvae1/hd-image.git \
 -e imgVersion=`cat /usr/share/HD/version`
