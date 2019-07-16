@@ -32,7 +32,7 @@ then
 fi
 
 # Check for any image updates
-./pullUpdates.bash
+/usr/share/HD/pullUpdates.bash
 
 # Get Pi's unique serial number
 SERIAL=`cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2`
