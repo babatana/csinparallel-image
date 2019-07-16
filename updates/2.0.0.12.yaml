@@ -18,6 +18,7 @@
   
 
 - name: Remove pullUpdates.bash
+  become: yes
   file:
     path: /usr/share/HD/pullUpdates.bash
     state: absent
