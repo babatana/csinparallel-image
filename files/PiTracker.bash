@@ -78,3 +78,6 @@ curl -i -X POST -H "Content-Type: application/json" $SERVERIP/pis \
 \"ipAddress\": \"$IP\", \"sdSerialNumber\": \"$SDSERIAL\", \
 \"imageVersion\": \"$IMAGEVER\", \"hardwareVersion\": \"$HARDREV\", \
 \"owner\": \"$OWNER\"}"
+curl -i -X POST -H "Content-Type: application/json" $SERVERIP/sDs \
+-d "{\"serialNumber\": \"$SDSERIAL\", \"piSerialNumber\": \"$SERIAL\", \
+\"imageVersion\": \"$IMAGEVER\", \"owner\": \"$OWNER\"}"
