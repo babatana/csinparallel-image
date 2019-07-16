@@ -8,7 +8,7 @@
 - name: Add CSInParallel to pi user
   become: yes
   copy:
-    src: /etc/skel/CSInParallel
+    src: /etc/skel/CSinParallel
     dest: /home/pi/
     owner: pi
     group: pi
