@@ -25,7 +25,7 @@ do
             ;;
         --update)
             shift
-            /usr/share/HD/pullUpdates.bash
+            /usr/share/HD/PiTracker.bash
             ;;
         *)
             show_help

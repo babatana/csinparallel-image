@@ -12,3 +12,6 @@
     src: /usr/share/HD/hd-image.bash
     path: /usr/bin/hd-image
     state: link
+
+- name: Update PiTracker
+  import_tasks: ../update_pitracker.yaml
