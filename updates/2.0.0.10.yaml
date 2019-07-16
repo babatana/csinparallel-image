@@ -7,8 +7,9 @@
 
 - name: Add CSInParallel to pi user
   become: yes
-  copy:
-    src: /etc/skel/CSinParallel
-    dest: /home/pi/
+  unarchive:
+    remote_src: yes
+    src: http://csinparallel.cs.stolaf.edu/CSinParallel.tar.gz
+    dest: /home/pi
     owner: pi
     group: pi

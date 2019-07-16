@@ -1,3 +1,6 @@
+- name: Update PiTracker
+  import_tasks: ../update_pitracker.yaml
+
 - name: Add hd-image.bash
   become: yes
   copy:
@@ -12,6 +15,12 @@
     src: /usr/share/HD/hd-image.bash
     path: /usr/bin/hd-image
     state: link
+  
+
+- name: Remove pullUpdates.bash
+  file:
+    path: /usr/share/HD/pullUpdates.bash
+    state: absent
 
 - name: Update PiTracker service
   become: yes
@@ -27,10 +36,18 @@
     regexp: "Description=Report Pi Tracking Data to CS Server"
     replace: "Description=Check for image updates and report to PiTracker server"
 
-- name: Restart PiTracker
+- name: Restart PiTracker service
   become: yes
   systemd:
     name: PiTracker.service
     daemon-reload: yes
     enabled: yes
     state: restarted
+
+- name: Create PiTracker cron job
+  become: yes
+  cron:
+    job: "/usr/bin/hd-image --update"
+    hour: 5
+    minute: 0
+    name: "PiTracker"
