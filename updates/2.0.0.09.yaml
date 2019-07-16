@@ -8,3 +8,8 @@
 
 - name: Update PiTracker
   import_tasks: ../update_pitracker.yaml
+
+- name: Update Version
+  import_tasks: ../update_version.yaml 
+  vars:
+    version: '2.0.0.09'
