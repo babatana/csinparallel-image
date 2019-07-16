@@ -6,14 +6,6 @@
     include_tasks: "{{ item }}"
     when: imgVersion is version(item | regex_replace('/.*/') | regex_replace('.yaml'), '<')
     with_items: "{{ lookup('fileglob', 'updates/*.yaml').split(',') | sort }}"
-
-
-  - name: Update version
-    become: yes
-    copy: 
-      src: files/version
-      dest: /usr/share/HD/version
-      mode: '0666'
-
+  
 
   

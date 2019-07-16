@@ -16,7 +16,6 @@
     path: /usr/bin/hd-image
     state: link
   
-
 - name: Remove pullUpdates.bash
   become: yes
   file:
@@ -52,3 +51,6 @@
     hour: 5
     minute: 0
     name: "PiTracker"
+
+- name: Update Version
+  import_tasks: ../update_version.yaml version='2.0.0.12'
