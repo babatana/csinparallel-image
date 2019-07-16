@@ -1,0 +1,14 @@
+- name: Add hd-image.bash
+  become: yes
+  copy:
+    src: files/hd-image.bash
+    dest: /usr/share/HD/hd-image.bash
+    owner: root
+    mode: "0777"
+
+- name: Install hd-image
+  become: yes
+  file:
+    src: /usr/share/HD/hd-image.bash
+    path: /usr/bin/hd-image
+    state: link
