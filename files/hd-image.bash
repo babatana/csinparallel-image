@@ -31,4 +31,7 @@ do
             show_help
             ;;
     esac
+    exit 0
 done
+
+show_help
