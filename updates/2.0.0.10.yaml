@@ -1,0 +1,14 @@
+- name: Add CSInParallel
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: http://csinparallel.cs.stolaf.edu/CSinParallel.tar.gz
+    dest: /etc/skel
+
+- name: Add CSInParallel to pi user
+  become: yes
+  copy:
+    src: /etc/skel/CSInParallel
+    dest: /home/pi/
+    owner: pi
+    group: pi
