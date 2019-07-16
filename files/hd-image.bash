@@ -9,7 +9,7 @@ show_help() {
     echo "      --update        check for image updates"
     echo "                      (this happens automatically at startup"
     echo "                       and at 5am each day)"
-    exit 0
+    exit 1
 }
 
 while test $# -gt 0
@@ -27,6 +27,8 @@ do
             shift
             /usr/share/HD/pullUpdates.bash
             ;;
-
+        *)
+            show_help
+            ;;
     esac
 done
