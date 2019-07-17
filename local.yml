@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   remote_user: root
+  become: yes
   tasks: 
   - name: "Updates"
     include_tasks: "{{ item }}"
