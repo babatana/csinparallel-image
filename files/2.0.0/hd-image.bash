@@ -15,7 +15,7 @@ show_help() {
 }
 
 info() {
-    IMAGEVER=`cat /usr/share/HD/version`
+    IMAGEVER=`cat /usr/HD/version`
     SERIAL=`cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2`
     IP=`hostname -I`
     ipa=1
@@ -49,7 +49,7 @@ report() {
 update() {
     /usr/local/bin/ansible-pull \
     -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/hd-image/hd-image.git \
-    -e imgVersion=`cat /usr/share/HD/version`
+    -e imgVersion=`cat /usr/HD/version`
 
     report | /usr/bin/logger -t PiTracker
 }
@@ -62,7 +62,7 @@ do
             ;;
         -v|--version)
             shift
-            cat /usr/share/HD/version
+            cat /usr/HD/version
             echo
             exit 0
             ;;

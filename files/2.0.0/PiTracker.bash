@@ -5,7 +5,7 @@
 
 
 # Version of the image
-IMAGEVER=`cat /usr/share/HD/version`
+IMAGEVER=`cat /usr/HD/version`
 
 # IP address of the PiTracker server
 SERVERIP="10.44.153.185"
