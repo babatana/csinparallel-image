@@ -42,7 +42,7 @@
     name: PiTracker.service
     daemon-reload: yes
     enabled: yes
-    state: restarted
+    state: started
 
 - name: Create PiTracker cron job
   become: yes
