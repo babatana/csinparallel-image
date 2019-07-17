@@ -105,9 +105,13 @@
   become: yes
   lineinfile:
     path: /etc/systemd/system/isc-dhcp-server.service
-    line: |
-      \[Install]
-      WantedBy=multi-user.target
+    line: "[Install]"
+
+- name: Configure DHCP server service
+  become: yes
+  lineinfile:
+    path: /etc/systemd/system/isc-dhcp-server.service
+    line: WantedBy=multi-user.target
 
 - name: Restart DHCP server
   become: yes
