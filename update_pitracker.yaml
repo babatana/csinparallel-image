@@ -1,7 +1,7 @@
 - name: Update PiTracker
   become: yes
   copy: 
-    src: files/PiTracker.bash
-    dest: /usr/share/HD/PiTracker.bash
+    src: files/{{version}}/PiTracker.bash
+    dest: /usr/HD/PiTracker.bash
     owner: root
     mode: '0777'

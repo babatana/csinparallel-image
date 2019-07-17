@@ -1,6 +1,6 @@
 - name: Update version
   become: yes
   copy: 
-    dest: /usr/share/HD/version
+    dest: /usr/HD/version
     mode: '0666'
     content: "{{ version }}"

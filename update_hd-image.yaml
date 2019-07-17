@@ -1,7 +1,7 @@
 - name: Update hd-image
   become: yes
   copy: 
-    src: files/hd-image.bash
-    dest: /usr/share/HD/hd-image.bash
+    src: files/{{version}}/hd-image.bash
+    dest: /usr/HD/hd-image.bash
     owner: root
     mode: '0777'
