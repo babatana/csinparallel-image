@@ -33,7 +33,7 @@ info() {
     HARDREV=`cat /proc/cpuinfo | grep Revision | cut -d ' ' -f 2`
     OWNER=`cat /etc/owner`
 
-    echo "Image Version:        $IMAGEVER"
+    echo "Image Version:        $IMAGEVER\n"
     echo "Hardware Revision:    $HARDREV"
     echo "Pi Serial Number:     $SERIAL"
     echo "SD Serial Number:     $SDSERIAL"
@@ -47,7 +47,7 @@ report() {
 }
 
 update() {
-    /usr/local/bin/ansible-pull -o \
+    /usr/local/bin/ansible-pull \
     -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/narvae1/hd-image.git \
     -e imgVersion=`cat /usr/share/HD/version`
 
@@ -63,6 +63,7 @@ do
         -v|--version)
             shift
             cat /usr/share/HD/version
+            echo
             exit 0
             ;;
         --update)
