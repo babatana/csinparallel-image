@@ -67,9 +67,9 @@
         range 10.0.0.2 10.0.0.253;
       \}
 
-- name: Wait for internet
+- name: Wait for DHCP
   wait_for:
-    timeout: 30
+    timeout: 20
 
 - name: Start DHCP server
   become: yes
@@ -99,7 +99,7 @@
   lineinfile:
     path: /etc/systemd/system/isc-dhcp-server.service
     line: "RestartSec=5"
-    insertAfter: "Restart=on-failure"
+    insertafter: "Restart=on-failure"
 
 - name: Configure DHCP server service
   become: yes
