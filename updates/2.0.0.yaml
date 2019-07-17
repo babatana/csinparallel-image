@@ -65,7 +65,12 @@
 
       subnet 10.0.0.0 netmask 255.255.255.0 {
         range 10.0.0.2 10.0.0.253;
-      \}
+
+- name: Configure DHCP server
+  become: yes
+  lineinfile:
+    path: /etc/dhcp/dhcpd.conf
+    line: "}"
 
 - name: Wait for DHCP
   wait_for:
@@ -105,13 +110,7 @@
   become: yes
   lineinfile:
     path: /etc/systemd/system/isc-dhcp-server.service
-    line: "[Install]"
-
-- name: Configure DHCP server service
-  become: yes
-  lineinfile:
-    path: /etc/systemd/system/isc-dhcp-server.service
-    line: WantedBy=multi-user.target
+    line: "[Install]\nWantedBy=multi-user.target"
 
 - name: Restart DHCP server
   become: yes
