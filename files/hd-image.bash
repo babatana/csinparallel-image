@@ -51,7 +51,7 @@ update() {
     -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/narvae1/hd-image.git \
     -e imgVersion=`cat /usr/share/HD/version`
 
-    report
+    report | /usr/bin/logger -t PiTracker
 }
 
 while test $# -gt 0
