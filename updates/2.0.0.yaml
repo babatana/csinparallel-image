@@ -67,21 +67,25 @@
         range 10.0.0.2 10.0.0.253;
       \}
 
+- name: Wait for internet
+  wait_for:
+    host: "8.8.8.8"
+
 - name: Start DHCP server
   become: yes
   systemd:
     name: isc-dhcp-server.service
+
+- name: Wait for DHCP server
   wait_for:
-    host: "8.8.8.8"
+    path: /run/systemd/generator.late/isc-dhcp-server.service
+    delay: 10
 
 - name: Configure DHCP server service
   become: yes
   copy:
     src: /run/systemd/generator.late/isc-dhcp-server.service
     dest: /etc/systemd/system/isc-dhcp-server.service
-  wait_for:
-    path: /run/systemd/generator.late/isc-dhcp-server.service
-    delay: 10
 
 - name: Configure DHCP server service
   become: yes
