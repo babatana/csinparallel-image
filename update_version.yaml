@@ -4,3 +4,9 @@
     dest: /usr/HD/version
     mode: '0666'
     content: "{{ version }}"
+
+- name: Notify updated
+  become: yes
+  file:
+    path: /usr/HD/.updated
+    state: touch

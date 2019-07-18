@@ -1,3 +1,15 @@
+- name: Find all bashrc files
+  become: yes
+  shell: find /home -name .bashrc
+  register: bashrc
+
+- name: Update .bashrc
+  become: yes
+  lineinfile:
+    path: "{{item}}"
+    line: "if [ -e /usr/HD/.updated ]; then cowsay HD Image has been updated to version $(cat /usr/HD/version); sudo rm /usr/HD/.updated; fi;"
+  with_items: "{{bashrc.stdout_lines}}"
+
 - name: Update version
   import_tasks: ../update_version.yaml
   vars:
