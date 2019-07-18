@@ -6,8 +6,3 @@
     include_tasks: "{{ item }}"
     when: imgVersion is version(item | regex_replace('/.*/') | regex_replace('.yaml'), '<')
     with_items: "{{ lookup('fileglob', 'updates/*.yaml').split(',') | sort }}"
-    register: made_update
-
-  - name: "Notify Updated"
-    shell: "export DISPLAY=:0.0 && zenity --info --text=\"HD Image has been updated to $(cat /usr/HD/version)\" --timeout=30 &"
-    when: (made_update.results | last).skipped is not defined
