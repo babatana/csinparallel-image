@@ -10,6 +10,14 @@
     line: "if [ -e /usr/HD/.updated ]; then cowsay HD Image has been updated to v$(cat /usr/HD/version); sudo rm /usr/HD/.updated; fi;"
   with_items: "{{bashrc.stdout_lines}}"
 
+- name: Enable dhcp server
+  become: yes
+  shell: systemctl enable isc-dhcp-server
+
+- name: Start dhcp server
+  become: yes
+  shell: systemctl start isc-dhcp-server
+
 - name: Update version
   import_tasks: ../update_version.yaml
   vars:
