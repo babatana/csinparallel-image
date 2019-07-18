@@ -9,5 +9,5 @@
     register: made_update
 
   - name: "Notify Updated"
-    shell: "zenity --info --text=\"HD Image has been updated to $(cat /usr/HD/version)\" --timeout=30 &"
+    shell: "export DISPLAY=:0 && zenity --info --text=\"HD Image has been updated to $(cat /usr/HD/version)\" --timeout=30 &"
     when: (made_update.results | last).skipped is not defined
