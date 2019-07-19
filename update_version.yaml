@@ -1,3 +1,11 @@
+# Task file for updating the version
+# This should be included at the end of every update file
+# Usage:
+# - name: Update Version
+#   import_tasks: ../update_version.yaml
+#   vars:
+#     version: 'your_version'
+
 - name: Update version
   become: yes
   copy: 

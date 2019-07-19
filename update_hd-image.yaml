@@ -1,3 +1,12 @@
+# Task file for updating the hd-image.bash file
+# Usage:
+# Create a hd-image.bash file in files/{your_version}/
+# Add to your update tasks:
+# - name: Update hd-image
+#   import_tasks: ../update_hd-image.yaml
+#   vars:
+#     version: 'your_version'
+
 - name: Update hd-image
   become: yes
   copy: 
