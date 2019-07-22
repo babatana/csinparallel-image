@@ -101,10 +101,11 @@ update() {
         let "tries++"
     done
 
-    if ! [ -z $BRANCH ]
+    if [ -z $BRANCH ]
     then
-        BRANCH="-C $BRANCH"
+        BRANCH="master"
     fi
+    BRANCH="-C $BRANCH"
 
     /usr/local/bin/ansible-pull \
     -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/hd-image/hd-image.git \
