@@ -1,3 +1,10 @@
+## [2.0.3](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.2.yaml)
+- Update `hd-image.bash`
+- Update `PiTracker.bash`
+- Modify systemd service and cron job to work with new `hd-image.bash`
+- Update version to 2.0.3
+
+
 ## [2.0.2](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.2.yaml)
 - Add a line to all `.bashrc` files that shows a message when the image has been updated
 - Enable and start isc-dhcp-server (wasn't enabled properly in 2.0.0)

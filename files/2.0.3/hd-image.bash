@@ -9,17 +9,17 @@ BRANCH=
 show_help() {
     echo "Hardware Design Image Tool $IMAGEVER"
     echo
-    echo "Usage: hd-image [-h|-v|info|report|git-fsck|update]"
+    echo "Usage: hd-image [-h|-v|info|report|update|git-fsck|reset-wallpaper]"
     echo "Options:"
-    echo "-h            show this help message"
-    echo "-v            show the current version of the image"
+    echo "-h                show this help message"
+    echo "-v                show the current version of the image"
     echo
-    echo "info          show information about this Pi"
-    echo "report        send info to PiTracker server"
-    echo "git-fsck      check all git repositories for errors"
-    echo "update        check for image updates"
-    echo "              (this happens automatically at startup"
-    echo "               and at 5am each day)"
+    echo "info              show information about this Pi"
+    echo "report            send info to PiTracker server"
+    echo "update            check for image updates"
+    echo
+    echo "git-fsck          check all git repositories for errors"
+    echo "reset-wallpaper   resets the wallpaper to default (temple.jpg)"
     exit 0
 }
 
@@ -180,6 +180,12 @@ do
             shift
             git_fsck
             exit $GITCHK
+            ;;
+        reset-wallpaper)
+            shift
+            export DISPLAY=:0.0
+            pcmanfm --set-wallpaper /usr/share/rpd-wallpaper/temple.jpg
+            exit 0
             ;;
         *)
             show_help
