@@ -45,6 +45,6 @@ _(Note that it has to be `.yaml`, not `.yml`, otherwise it won't be found)_
 ```
 
 ## A Note About Version Numbering
-Some version numbers won't be possible, i.e. going from v2.0.9 to v2.0.10.
-When the ansible playbook is run, it first sorts all the files in `updates/`.
-Therefore, going from 2.0.9 to 2.0.10 won't work, but going from 2.0.09 to 2.0.10 will.
+Before 2.0.3, versions were sorted as strings, meaning 2.0.9 would come after 2.0.10.
+This has been fixed with the custom `version_sort` filter (in `filter_plugins/VersionSort.py`)
+and 2.0.9 will come before 2.0.10, as intended.
