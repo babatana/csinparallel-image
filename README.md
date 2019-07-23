@@ -11,6 +11,7 @@ The image has been tested on the following revisions:
 - Raspberry Pi 4B - 2GB
 - Raspberry Pi 4B - 4GB
 - Raspberry Pi 3B
+- Raspberry Pi 3B+
 
 ## How it Works
 The image uses `ansible-pull` to check for updates. This is the inverse of how ansible is
