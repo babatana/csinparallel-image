@@ -27,9 +27,7 @@ Whenever the Pi checks for an update, it downloads the repository and looks for 
 `local.yml`. It then runs any plays in that file. Our `local.yml` file contains one task which
 finds all `.yaml` files in `updates/` and includes their tasks if the version number they are 
 associated with is greater than the version reported by the Pi. It then runs these plays in
-order by version number (see [UPDATE.md](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/UPDATE.md)
-for a note about version numbering). After every update check a report is sent to the
-PiTracker server.
+order by version number. After every update check a report is sent to the PiTracker server.
 
 ## Creating Your Own Copy of the Image
 The image uses Ansible to minimize the amount of work you have to do to set up your image.

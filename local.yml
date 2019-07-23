@@ -5,4 +5,4 @@
   - name: "Updates"
     include_tasks: "{{ item }}"
     when: imgVersion is version(item | regex_replace('/.*/') | regex_replace('.yaml'), '<')
-    with_items: "{{ lookup('fileglob', 'updates/*.yaml').split(',') | sort }}"
+    with_items: "{{ lookup('fileglob', 'updates/*.yaml').split(',') | version_sort }}"
