@@ -1,5 +1,15 @@
+## [2.0.7](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.7.yaml)
+- Change permissions of `/usr/HD` so all users can remove `.updated`
+- Update version to 2.0.7
+
+
+## [2.0.6](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.6.yaml)
+- Remove `sudo` from `rm /usr/HD/.updated` command in `.bashrc`
+- Update version to 2.0.6
+
+
 ## [2.0.5](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.5.yaml)
-- Add checks to .bashrc for /etc/owner containing "None" or "username"
+- Add checks to `.bashrc` for `/etc/owner` containing "None" or "username"
 - Update version to 2.0.5
 
 
