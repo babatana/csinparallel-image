@@ -1,4 +1,9 @@
-## [2.0.3](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.2.yaml)
+## [2.0.4](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.4.yaml)
+- Update `PiTracker.bash` to use new PiTracker subdomain
+- Update version to 2.0.4
+
+
+## [2.0.3](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.3.yaml)
 - Update `hd-image.bash`
 - Update `PiTracker.bash`
 - Modify systemd service and cron job to work with new `hd-image.bash`
