@@ -1,3 +1,8 @@
+## [2.0.5](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.5.yaml)
+- Add checks to .bashrc for /etc/owner containing "None" or "username"
+- Update version to 2.0.5
+
+
 ## [2.0.4](https://stogit.cs.stolaf.edu/hd-image/hd-image/blob/master/updates/2.0.4.yaml)
 - Update `PiTracker.bash` to use new PiTracker subdomain
 - Update version to 2.0.4

@@ -18,3 +18,4 @@
   file:
     path: /usr/HD/.updated
     state: touch
+    mode: '0666'
