@@ -46,7 +46,8 @@ up to check for updates automatically.
 ## Image Tools
 ### PiTracker
 The HD Image includes a program called PiTracker which is used to report information 
-about the Pi to a server (located in RMS 201 - running on two Raspberry Pis).
+about the Pi to a server (located in the server room running on two Raspberry Pis
+and accessible at pitracker.cs.stolaf.edu).
 
 The information it reports includes:
 - Pi's Serial Number
