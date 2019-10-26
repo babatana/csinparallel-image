@@ -47,7 +47,7 @@ up to check for updates automatically.
 ### PiTracker
 The HD Image includes a program called PiTracker which is used to report information 
 about the Pi to a server (located in the server room running on two Raspberry Pis
-and accessible at pitracker.cs.stolaf.edu).
+and accessible at `pitracker.cs.stolaf.edu`).
 
 The information it reports includes:
 - Pi's Serial Number
@@ -58,7 +58,7 @@ The information it reports includes:
 - Image Version
 - Owner of the Pi (taken from /etc/owner)
 
-Note that this tracking only works when the Pi is connected to St. Olaf Guest.
+Note that this tracking only works when the Pi is connected to a St. Olaf network, such as St. Olaf Guest.
 
 ### hd-image
 The HD Image also includes a tool called `hd-image` that can help you manage your image.
