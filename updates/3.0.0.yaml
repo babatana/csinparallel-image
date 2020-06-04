@@ -1,0 +1,63 @@
+# Packages
+
+- name: Upgrade packages
+  become: yes
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install necessary packages
+  become: yes
+  apt:
+    name: [isc-dhcp-server, vim, emacs, cowsay, sl]
+
+
+
+# Add hd-image and PiTracker
+
+- name: Add HD directory
+  become: yes
+  file:
+    path: /usr/HD
+    state: directory
+
+- name: Add hd-image
+  import_tasks: ../update_hd-image.yaml
+  vars:
+    version: '2.0.0'
+
+- name: Add PiTracker
+  import_tasks: ../update_pitracker.yaml
+  vars:
+    version: '2.0.0'
+
+- name: Install hd-image
+  become: yes
+  file:
+    src: /usr/HD/hd-image.bash
+    path: /usr/bin/hd-image
+    state: link
+
+
+
+# Systemd service
+
+- name: Create PiTracker service
+  become: yes
+  copy:
+    src: files/2.0.0/PiTracker.service
+    dest: /lib/systemd/system/PiTracker.service
+
+- name: Enable PiTracker service
+  become: yes
+  systemd:
+    name: PiTracker.service
+    daemon-reload: yes
+    enabled: yes
+
+
+
+- name: Update version
+  import_tasks: ../update_version.yaml
+  vars:
+    version: '3.0.0'
