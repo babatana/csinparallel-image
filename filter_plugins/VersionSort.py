@@ -1,13 +1,18 @@
 #!/usr/bin/python
 
+from typing import List
+
+def format_version(version: str) -> List[str]:
+    return version.split('/')[-1].replace('.yaml', '').split('.')
+
 def sort_by_major_version(version: str) -> int:
-    return int(version.split('.')[0])
+    return int(format_version(version)[0])
 
 def sort_by_minor_version(version: str) -> int:
-    return int(version.split('.')[1])
+    return int(format_version(version)[1])
 
 def sort_by_patch_version(version: str) -> int:
-    return int(version.split('.')[2])
+    return int(format_version(version)[2])
 
 
 class FilterModule(object):
