@@ -17,6 +17,6 @@ class FilterModule(object):
         }
 
     def version_sort(self, versions):
-        formatted_versions = [version.split('/')[-1].replace('.yaml', '') for version in versions]
+        formatted_versions = [version.split('/')[-1] for version in versions]
         return sorted(sorted(sorted(formatted_versions, key=sort_by_patch_version), key=sort_by_minor_version), key=sort_by_major_version)
         
