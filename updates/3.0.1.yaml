@@ -170,23 +170,29 @@
 - name: Update check
   become: yes
   lineinfile:
-    path: "{{item}}"
+    path: "{{ bashrc_file }}"
     line: "if [ -e /usr/HD/.updated ]; then cowsay HD Image has been updated to v$(cat /usr/HD/version); rm /usr/HD/.updated; fi;"
-  with_items: "{{bashrc.stdout_lines}}"
+  with_items: "{{ bashrc.stdout_lines }}"
+  loop_control:
+    loop_var: bashrc_file
 
 - name: /etc/owner check (None)
   become: yes
   lineinfile:
-    path: "{{item}}"
+    path: "{{ bashrc_file }}"
     line: "NAME=`cat /etc/owner`; if [[ $NAME == \"None\" ]]; then echo \"/etc/owner still contains \\\"None\\\". Please update it by running\"; echo \"    echo username > /etc/owner\"; echo \"(where username is your username)\"; fi"
-  with_items: "{{bashrc.stdout_lines}}"
+  with_items: "{{ bashrc.stdout_lines }}"
+  loop_control:
+    loop_var: bashrc_file
 
 - name: /etc/owner check (username)
   become: yes
   lineinfile:
-    path: "{{item}}"
+    path: "{{ bashrc_file }}"
     line: "NAME=`cat /etc/owner`; if [[ $NAME == \"username\" ]]; then echo \"/etc/owner contains \\\"username\\\". We don't believe this is a valid username.\"; echo \"Please update it by running\"; echo \"    echo username > /etc/owner\"; echo \"(where username is YOUR username)\"; fi"
-  with_items: "{{bashrc.stdout_lines}}"
+  with_items: "{{ bashrc.stdout_lines }}"
+  loop_control:
+    loop_var: bashrc_file
 
 
 

@@ -1,3 +1,6 @@
+# Get the OS to the same point as the custom image (https://stogit.cs.stolaf.edu/hd-image/hd-image-gen)
+
+
 # Packages
 
 - name: Upgrade packages
@@ -24,12 +27,12 @@
 - name: Add hd-image
   import_tasks: ../update_hd-image.yaml
   vars:
-    version: '2.0.0'
+    version: '3.0.0'
 
 - name: Add PiTracker
   import_tasks: ../update_pitracker.yaml
   vars:
-    version: '2.0.0'
+    version: '3.0.0'
 
 - name: Install hd-image
   become: yes
