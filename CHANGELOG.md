@@ -12,7 +12,6 @@
     - Modify `/etc/systemd/system/isc-dhcp-server.service`
 - Create cron job for PiTracker
   - Runs at 5 am every day to check for updates and report info to PiTracker server
-- Create `/etc/owner`
 - Add a line to all `.bashrc` files that shows a message when the image has been updated
 - Add checks to `.bashrc` for `/etc/owner` containing "None" or "username"
 - Update version to 3.0.1
@@ -33,6 +32,7 @@
   - Add `PiTracker.bash`
   - Add `hd-image.bash`
   - Create symlink from `/usr/bin/hd-image` to `/usr/HD/hd-image.bash`
+- Create `/etc/owner`
 - Create PiTracker service
   - Runs at boot to check for updates and report info to PiTracker server
 - Update version to 3.0.0
