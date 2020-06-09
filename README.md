@@ -29,7 +29,7 @@ The 5am daily check is done with a cron job.
 
 Whenever the Pi checks for an update, it downloads the repository and looks for a file called `local.yml`.
 It then runs any plays in that file.
-Our `local.yml` file contains one task which finds all `.yaml` files in `updates/` and includes their tasks if the version number they are associated with is greater than the version reported by the Pi.
+Our `local.yml` file contains one play with one task which finds all `.yaml` files in `updates/` and includes their tasks if the version number they are associated with is greater than the version reported by the Pi.
 It then runs these plays in order by version number.
 After every update check a report is sent to the PiTracker server.
 
