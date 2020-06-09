@@ -1,8 +1,20 @@
 # Changelog
 
+## [3.0.2](updates/3.0.2.yaml)
+
+3.0.2 finishes the configuration for all images.
+- Add the CSinParallel directory to all home directories
+- Create cron job for PiTracker
+  - Runs at 5 am every day to check for updates and report info to PiTracker server
+- Create `/etc/owner`
+- Add a line to all `.bashrc` files that shows a message when the image has been updated
+- Add checks to `.bashrc` for `/etc/owner` containing "None" or "username"
+- Update version to 3.0.2
+
+
 ## [3.0.1](updates/3.0.1.yaml)
 
-3.0.1 finishes the configuration for all images.
+3.0.1 sets the static ip address and configures dhcp.
 - Set static IP to 10.0.0.254
 - Configure isc-dhcp-server
   - Add eth0 to interfaces used by the server
@@ -10,11 +22,6 @@
   - Modify service to restart on failure
     - Copy `/run/systemd/generator.late/isc-dhcp-server.service` to `/etc/systemd/system/`
     - Modify `/etc/systemd/system/isc-dhcp-server.service`
-- Create cron job for PiTracker
-  - Runs at 5 am every day to check for updates and report info to PiTracker server
-- Create `/etc/owner`
-- Add a line to all `.bashrc` files that shows a message when the image has been updated
-- Add checks to `.bashrc` for `/etc/owner` containing "None" or "username"
 - Update version to 3.0.1
 
 
