@@ -42,7 +42,7 @@ Perform basic setup and make sure the Pi has an internet connection and can reac
 
 Then run the commands
 ```
-sudo pip install ansible
+sudo pip3 install ansible
 
 ansible-pull -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/hd-image/hd-image.git -e imgVersion=0
 ```
