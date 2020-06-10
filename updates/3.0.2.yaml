@@ -64,6 +64,9 @@
   loop_control:
     loop_var: bashrc_file
 
+
+# Version Update
+
 - name: Update version
   import_tasks: ../update_version.yaml
   vars:

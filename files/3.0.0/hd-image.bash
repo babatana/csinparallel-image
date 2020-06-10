@@ -101,15 +101,9 @@ update() {
         let "tries++"
     done
 
-    if [ -z $BRANCH ]
-    then
-        BRANCH="master"
-    fi
-    BRANCH="-C $BRANCH"
-
     /usr/local/bin/ansible-pull \
     -U https://gitlab+deploy-token-12:sErpRQP96JzfVponpBh-@stogit.cs.stolaf.edu/hd-image/hd-image.git \
-    -e imgVersion=$IMAGEVER $BRANCH
+    -e imgVersion=$IMAGEVER -C ${BRANCH:-master}
 
     report | /usr/bin/logger -t PiTracker
 }
