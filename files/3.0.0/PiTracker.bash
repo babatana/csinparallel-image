@@ -78,11 +78,17 @@ then
 fi
 
 # Send data to PiTracker server
+
+echo "Communicating with PiTracker"
+
+# Pi Table
 curl -i -X POST -H "Content-Type: application/json" $SERVERIP/pis \
 -d "{\"serialNumber\": \"$SERIAL\", \"macAddress\": \"$MAC\", \
 \"ipAddress\": \"$IP\", \"sdSerialNumber\": \"$SDSERIAL\", \
 \"imageVersion\": \"$IMAGEVER\", \"hardwareVersion\": \"$HARDREV\", \
 \"gitHealth\": \"$GITHEALTH\", \"owner\": \"$OWNER\"}"
+
+# SD Table
 curl -i -X POST -H "Content-Type: application/json" $SERVERIP/sDs \
 -d "{\"serialNumber\": \"$SDSERIAL\", \"piSerialNumber\": \"$SERIAL\", \
 \"imageVersion\": \"$IMAGEVER\", \"owner\": \"$OWNER\"}"
