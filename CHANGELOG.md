@@ -40,6 +40,7 @@
   - Add `PiTracker.bash`
   - Add `hd-image.bash`
   - Create symlink from `/usr/bin/hd-image` to `/usr/HD/hd-image.bash`
+- Create `/etc/owner`
 - Create PiTracker service
   - Runs at boot to check for updates and report info to PiTracker server
 - Update version to 3.0.0

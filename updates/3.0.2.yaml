@@ -30,17 +30,6 @@
 
 
 
-# /etc/owner
-
-- name: Create /etc/owner
-  become: yes
-  copy:
-    dest: /etc/owner
-    mode: '0666'
-    content: "None"
-
-
-
 # bashrc
 
 - name: Find all bashrc files
