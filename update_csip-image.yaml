@@ -1,0 +1,16 @@
+# Task file for updating the csip-image.bash file
+# Usage:
+# Create a csip-image.bash file in files/{your_version}/
+# Add to your update tasks:
+# - name: Update csip-image
+#   import_tasks: ../update_csip-image.yaml
+#   vars:
+#     version: 'your_version'
+
+- name: Update csip-image
+  become: yes
+  copy: 
+    src: files/{{ version }}/csip-image.bash
+    dest: /usr/HD/csip-image.bash
+    owner: root
+    mode: '0777'

@@ -17,19 +17,6 @@
     group: pi
 
 
-
-# PiTracker cron job
-
-- name: Create PiTracker cron job
-  become: yes
-  cron:
-    job: "/usr/bin/hd-image update"
-    hour: 5
-    minute: 0
-    name: "PiTracker"
-
-
-
 # bashrc
 
 - name: Find all bashrc files
@@ -41,25 +28,7 @@
   become: yes
   lineinfile:
     path: "{{ bashrc_file }}"
-    line: "if [ -e /usr/HD/.updated ]; then cowsay HD Image has been updated to v$(cat /usr/HD/version); rm /usr/HD/.updated; fi;"
-  with_items: "{{ bashrc.stdout_lines }}"
-  loop_control:
-    loop_var: bashrc_file
-
-- name: /etc/owner check (None)
-  become: yes
-  lineinfile:
-    path: "{{ bashrc_file }}"
-    line: "NAME=`cat /etc/owner`; if [[ $NAME == \"None\" ]]; then echo \"/etc/owner still contains \\\"None\\\". Please update it by running\"; echo \"    echo username > /etc/owner\"; echo \"(where username is your username)\"; fi"
-  with_items: "{{ bashrc.stdout_lines }}"
-  loop_control:
-    loop_var: bashrc_file
-
-- name: /etc/owner check (username)
-  become: yes
-  lineinfile:
-    path: "{{ bashrc_file }}"
-    line: "NAME=`cat /etc/owner`; if [[ $NAME == \"username\" ]]; then echo \"/etc/owner contains \\\"username\\\". We don't believe this is a valid username.\"; echo \"Please update it by running\"; echo \"    echo username > /etc/owner\"; echo \"(where username is YOUR username)\"; fi"
+    line: "if [ -e /usr/CSiP/.updated ]; then cowsay CSiP Image has been updated to v$(cat /usr/CSiP/version); rm /usr/CSiP/.updated; fi;"
   with_items: "{{ bashrc.stdout_lines }}"
   loop_control:
     loop_var: bashrc_file
