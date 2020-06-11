@@ -21,6 +21,15 @@
     name: dhcpcd.service
     state: restarted
 
+- name: Wait for DHCP to fail
+  wait_for:
+    timeout: 20
+
+- name: Restart dhcpcd
+  become: yes
+  systemd:
+    name: dhcpcd.service
+    state: restarted
 
 
 # Configure DHCP server

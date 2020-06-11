@@ -16,6 +16,7 @@
 
 3.0.1 sets the static ip address and configures dhcp.
 - Set static IP to 10.0.0.254
+- Restart dhcpcd, wait for it to fail, then restart it again
 - Configure isc-dhcp-server
   - Add eth0 to interfaces used by the server
   - Modify `/etc/dhcp/dhcpd.conf`
