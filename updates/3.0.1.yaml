@@ -1,18 +1,3 @@
-# Packages
-
-- name: Upgrade packages
-  become: yes
-  apt:
-    update_cache: yes
-    upgrade: yes
-
-- name: Install necessary packages
-  become: yes
-  apt:
-    name: [isc-dhcp-server, vim, emacs, cowsay, sl]
-
-
-
 # Set static IP
 
 - name: Set up static IP
@@ -36,6 +21,15 @@
     name: dhcpcd.service
     state: restarted
 
+- name: Wait for DHCP to fail
+  wait_for:
+    timeout: 20
+
+- name: Restart dhcpcd
+  become: yes
+  systemd:
+    name: dhcpcd.service
+    state: restarted
 
 
 # Configure DHCP server
@@ -122,88 +116,18 @@
     path: /etc/systemd/system/isc-dhcp-server.service
     line: "[Install]\nWantedBy=multi-user.target"
 
-- name: Restart DHCP server
+- name: Enable dhcp server
   become: yes
-  systemd:
-    name: isc-dhcp-server.service
-    enabled: yes
-    state: restarted
+  shell: systemctl enable isc-dhcp-server
 
-
-
-# Add HD directory and contents
-
-- name: Add HD directory
+- name: Start dhcp server
   become: yes
-  file:
-    path: /usr/HD
-    state: directory
-
-- name: Add PiTracker
-  import_tasks: ../update_pitracker.yaml
-  vars:
-    version: '2.0.0'
-
-- name: Add hd-image
-  import_tasks: ../update_hd-image.yaml
-  vars:
-    version: '2.0.0'
-
-- name: Install hd-image
-  become: yes
-  file:
-    src: /usr/HD/hd-image.bash
-    path: /usr/bin/hd-image
-    state: link
+  shell: systemctl start isc-dhcp-server
 
 
-
-# Add CSinParallel
-
-- name: Add CSinParallel
-  become: yes
-  unarchive:
-    remote_src: yes
-    src: http://csinparallel.cs.stolaf.edu/CSinParallel.tar.gz
-    dest: /etc/skel
-
-- name: Add CSinParallel to pi user
-  become: yes
-  unarchive:
-    remote_src: yes
-    src: http://csinparallel.cs.stolaf.edu/CSinParallel.tar.gz
-    dest: /home/pi
-    owner: pi
-    group: pi
-
-
-
-# PiTracker cron job and systemd service
-
-- name: Create PiTracker cron job
-  become: yes
-  cron:
-    job: "/usr/bin/hd-image --update"
-    hour: 5
-    minute: 0
-    name: "PiTracker"
-
-- name: Create PiTracker service
-  become: yes
-  copy:
-    src: files/2.0.0/PiTracker.service
-    dest: /lib/systemd/system/PiTracker.service
-
-- name: Start PiTracker service
-  become: yes
-  systemd:
-    name: PiTracker.service
-    daemon-reload: yes
-    enabled: yes
-
-
+# Version Update
 
 - name: Update version
   import_tasks: ../update_version.yaml
   vars:
-    version: '2.0.0'
+    version: '3.0.1'

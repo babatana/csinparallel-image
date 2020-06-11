@@ -1,0 +1,46 @@
+# Get the OS to the same point as the custom image (https://github.com/maxnz/csinparallel-gen)
+
+
+# Packages
+
+- name: Upgrade packages
+  become: yes
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install necessary packages
+  become: yes
+  apt:
+    name: [isc-dhcp-server, vim, emacs, cowsay, sl]
+
+
+
+# Add csip-image 
+
+- name: Add CSiP directory
+  become: yes
+  file:
+    path: /usr/CSiP
+    state: directory
+
+- name: Add csip-image
+  import_tasks: ../update_csip-image.yaml
+  vars:
+    version: '3.0.0'
+
+- name: Install csip-image
+  become: yes
+  file:
+    src: /usr/CSiP/csip-image.bash
+    path: /usr/bin/csip-image
+    state: link
+
+
+
+# Version Update
+
+- name: Update version
+  import_tasks: ../update_version.yaml
+  vars:
+    version: '3.0.0'
