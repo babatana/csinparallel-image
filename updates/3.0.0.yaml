@@ -1,4 +1,4 @@
-# Get the OS to the same point as the custom image (https://stogit.cs.stolaf.edu/hd-image/hd-image-gen)
+# Get the OS to the same point as the custom image (https://github.com/maxnz/csinparallel-gen)
 
 
 # Packages
@@ -16,58 +16,25 @@
 
 
 
-# Add hd-image and PiTracker
+# Add csip-image 
 
-- name: Add HD directory
+- name: Add CSiP directory
   become: yes
   file:
-    path: /usr/HD
+    path: /usr/CSiP
     state: directory
 
-- name: Add hd-image
-  import_tasks: ../update_hd-image.yaml
+- name: Add csip-image
+  import_tasks: ../update_csip-image.yaml
   vars:
     version: '3.0.0'
 
-- name: Add PiTracker
-  import_tasks: ../update_pitracker.yaml
-  vars:
-    version: '3.0.0'
-
-- name: Install hd-image
+- name: Install csip-image
   become: yes
   file:
-    src: /usr/HD/hd-image.bash
-    path: /usr/bin/hd-image
+    src: /usr/CSiP/csip-image.bash
+    path: /usr/bin/csip-image
     state: link
-
-
-
-# /etc/owner
-
-- name: Create /etc/owner
-  become: yes
-  copy:
-    dest: /etc/owner
-    mode: '0666'
-    content: "None"
-
-
-
-# Systemd service
-
-- name: Create PiTracker service
-  become: yes
-  copy:
-    src: files/3.0.0/PiTracker.service
-    dest: /lib/systemd/system/PiTracker.service
-
-- name: Enable PiTracker service
-  become: yes
-  systemd:
-    name: PiTracker.service
-    daemon-reload: yes
-    enabled: yes
 
 
 
