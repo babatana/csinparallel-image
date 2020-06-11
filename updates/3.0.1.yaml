@@ -21,6 +21,11 @@
     name: dhcpcd.service
     state: restarted
 
+- name: Restart dhcpcd
+  become: yes
+  systemd:
+    name: dhcpcd.service
+    state: restarted
 
 
 # Configure DHCP server
