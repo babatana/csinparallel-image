@@ -18,21 +18,15 @@
     dest: {destination_path}/{your_file}
 ```
 
-### Adding an Update to `hd-image.bash` or `PiTracker.bash`
+### Adding an Update to `csip-image.bash`
 
 - Make a copy of the latest version of the file and add it to `files/{your_version}/`
   - Check that no versions since have made single line updates to the file (using `lineinfile` or `replace`, for example). If so, then you should probably get the file from an updated copy of the image.
 - Make any necessary updates to that file
 - There are pre-made tasks that you can use:
 ```
-- name: Update PiTracker
-  import_tasks: ../update_pitracker.yaml
-  vars:
-    version: 'your_version'
-```
-```
-- name: Update hd-image
-  import_tasks: ../update_hd-image.yaml
+- name: Update csip-image
+  import_tasks: ../update_csip-image.yaml
   vars:
     version: 'your_version'
 ```
@@ -47,9 +41,3 @@
   vars:
     version: 'your_version'
 ```
-
-
-## A Note About Version Numbering
-
-Before 2.0.3, versions were sorted as strings, meaning 2.0.9 would come after 2.0.10.
-This has been fixed with the custom `version_sort` filter (in `filter_plugins/VersionSort.py`) and 2.0.9 will come before 2.0.10, as intended.
