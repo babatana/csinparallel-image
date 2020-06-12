@@ -23,6 +23,7 @@
   file:
     path: /usr/CSiP
     state: directory
+    mode: '0777'
 
 - name: Add csip-image
   import_tasks: ../update_csip-image.yaml
