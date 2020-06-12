@@ -34,6 +34,14 @@
     loop_var: bashrc_file
 
 
+# Disable Updater service
+- name: Disable Updater.service
+  become: yes
+  systemd:
+    name: Updater.service
+    enabled: no
+
+
 # Version Update
 
 - name: Update version
