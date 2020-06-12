@@ -36,5 +36,6 @@
 - Add `/usr/CSiP/` directory
   - Add `csip-image.bash`
   - Create symlink from `/usr/bin/csip-image` to `/usr/CSiP/csip-image.bash`
+- Add and enable Updater
 - Update version to 3.0.0
 

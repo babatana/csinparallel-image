@@ -38,6 +38,16 @@
 
 
 
+# Systemd service
+
+- name: Create Updater service
+  become: yes
+  copy:
+    src: files/3.0.0/Updater.service
+    dest: /lib/systemd/system/Updater.service
+
+
+
 # Version Update
 
 - name: Update version
