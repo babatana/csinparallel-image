@@ -11,6 +11,6 @@
   become: yes
   copy: 
     src: files/{{ version }}/csip-image.bash
-    dest: /usr/HD/csip-image.bash
+    dest: /usr/CSiP/csip-image.bash
     owner: root
     mode: '0777'
