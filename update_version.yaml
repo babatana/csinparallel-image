@@ -9,13 +9,13 @@
 - name: Update version
   become: yes
   copy: 
-    dest: /usr/HD/version
+    dest: /usr/CSiP/version
     mode: '0666'
     content: "{{ version }}"
 
 - name: Notify updated
   become: yes
   file:
-    path: /usr/HD/.updated
+    path: /usr/CSiP/.updated
     state: touch
     mode: '0666'
